@@ -1,3 +1,6 @@
+/* 
+* Función que pregunta al usuario si desea cifrar o descrifrar
+*/
 function menu() {
   do {
     var answer = prompt('Indique el número de lo que desea hacer: \n 1) Cifrar - 2) Descifrar');
@@ -14,24 +17,24 @@ function menu() {
 }
 menu();
 
+/*
+* Función que cifra el contenido ingresado en el Prompt y 
+* lo devuelve en un alert.
+*/
+
 function cipher() {
   do {
-  // Valida que la frase sea string
     var phraseUser = prompt('Ingrese la frase que quiere cifrar');
     var phraseWithoutSpecial = phraseUser.replace(/[^a-zA-Z 0-9.]+/g, ' ');
-    // split separa como en un arreglo por palabra, join string vacio une sin nada entremedio
     var phrase = phraseWithoutSpecial.split(' ').join(''); 
-
     if (phrase.length === '' || isNaN(phrase) === false) {
       alert('Debe ingresar una frase');
     }
   } while (phrase === '' || isNaN(phrase) === false);
-
   var arrayAscii = [];
   for (var i = 0; i < phrase.length; i++) {
     arrayAscii.push(((phrase.charCodeAt(i) - 65 + 33) % 26) + 65);
   }
-
   var arrayCipher = [];
   for (var i = 0; i < arrayAscii.length; i++) {
     arrayCipher.push(String.fromCharCode(arrayAscii[i]));
@@ -40,13 +43,16 @@ function cipher() {
   alert('La frase cifrada es: ' + result);
 }
 
+/*
+* Funcion que descrifra un texto ya codificado
+*/
+
 function decipher() {
   do {
   // Valida que la frase sea string
     var phraseUser = prompt('Ingrese la frase que quiere descifrar');
     var phraseWithoutSpecial = phraseUser.replace(/[^a-zA-Z 0-9.]+/g, '');
     var phrase = phraseWithoutSpecial.split(' ').join(''); 
-    // Split separa como en un arreglo por palabra, join string vacio une sin nada entremedio
     if (phrase.length === '' || isNaN(phrase) === false) {
       alert('Debe ingresar una frase');
     }
